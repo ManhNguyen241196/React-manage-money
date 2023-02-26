@@ -2,7 +2,8 @@
 // import "./App.css";
 
 //component
-import ExpenseItem from "./components/ExpenseItem";
+import ExpenseItem from "./components/Expenses/ExpenseItem";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
   const expense = [
@@ -28,6 +29,10 @@ function App() {
     },
   ];
 
+  const addExpenseHandler = (expense) => {
+    console.log(expense, "in app.js");
+  };
+
   return (
     <div className="App">
       {/* <header className="App-header"></header> */}
@@ -36,6 +41,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p> */}
+        <NewExpense onAddNewExpense={addExpenseHandler} />
       </header>
       <body>
         <>
