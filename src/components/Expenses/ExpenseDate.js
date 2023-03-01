@@ -6,7 +6,7 @@ function ExpenseDate(props) {
   const month = props.date.toLocaleString("en-US", { month: "long" });
   const year = props.date.getFullYear();
   const day = props.date.toLocaleString("en-US", { day: "numeric" });
-  console.log(props);
+  // console.log(props);
 
   return (
     <div className="expense-date">

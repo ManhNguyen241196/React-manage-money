@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./NewExpense.css";
 
@@ -7,6 +7,8 @@ import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 
 const NewExpense = (props) => {
+  const [isEditing, setIsEditing] = useState(false);
+
   //hàm lấy data từ hàm con lên parent và đính kèm id vào đó nữa.
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
@@ -17,9 +19,23 @@ const NewExpense = (props) => {
     props.onAddNewExpense(expenseData);
   };
 
+  const startEditing = () => {
+    setIsEditing(true);
+  };
+
+  const stopEditing = () => {
+    setIsEditing(false);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {!isEditing && <button onClick={startEditing}>Add New Expense</button>}
+      {isEditing && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onStopEditing={stopEditing}
+        />
+      )}
     </div>
   );
 };
